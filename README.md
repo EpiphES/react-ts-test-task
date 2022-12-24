@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# Тестовое задание
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Ссылка на [gh-pages](https://epiphes.github.io/react-ts-test-task/).
+## Задание 1
+Дана строка, содержащая скобки трёх видов (круглые, квадратные и фигурные) и любые другие символы. Посчитайте сколько скобок расставлено корректно а сколько нет.
+Например, в строке ([]{})[] скобки расставлены корректно, а в строке ([]] — нет. В первом случае правильно расставлено 8 скобок. Во втором случае указаны 2 скобки правильно, и 2 не правильно.
 
-## Available Scripts
+## Задание 2
+Вам необходимо сделать функциональными компонентами следующую задачу:
 
-In the project directory, you can run:
+На странице есть список и кнопка добавления в этот список нового элемента.
+Каждый элемент списка отображает свой порядковый номер и обратный отсчет в секундах до его автоматического удаления из списка.
+Каждый добавленный элемент, должен находится в нем случайное количество секунд от 10 до 30. При исчезновении во всем списке пересчитывается порядковый номер.
 
-### `npm start`
+Пример: Пользователь нажал на кнопку добавить три раза. В списке появилось три элемента.
+1. Исчезнет через 13 секунд
+2. Исчезнет через 25 секунд
+3. Исчезнет через 15 секунд.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+По истечению 13 секунд, из списка будет удален 1 элемент. И он станет вот таким:
+1. Исчезнет через 12 секунд
+2. Исчезнет через 2 секунды
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Стек: 
 
-### `npm test`
+* TypeScript, HTML, CSS
+* React.js
+* AntDesign
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Инструкция по установке и запуску приложения:
 
-### `npm run build`
+  git clone https://github.com/EpiphES/react-ts-test-task
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+  npm start
