@@ -43,11 +43,14 @@ const ListTaskContainer: React.FC = () => {
           <li>Исчезнет через 2 секунды</li>
         </ol>
       </TaskTextCollapse>
-      <div>
       <Divider orientation='center'>Список исчезающих элементов</Divider>
       <List
         header={
-          <Button type='primary' onClick={generateItem} style={{ display: 'block', margin: 'auto' }}>
+          <Button
+            type='primary'
+            size='large'
+            onClick={generateItem}
+            style={{ display: 'block', margin: 'auto' }}>
             Добавить элемент
           </Button>}
         bordered
@@ -58,7 +61,6 @@ const ListTaskContainer: React.FC = () => {
           </List.Item>
         )}
       />
-      </div>
     </>
   );
 }
