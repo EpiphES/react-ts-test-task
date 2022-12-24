@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Button, Input, Tooltip } from 'antd';
 import { IInputGroupProps } from '../types/data';
 
-
 const InputGroup: React.FC<IInputGroupProps> = (props) => {
   const { handleSubmit, setShowResult } = props;
   const [stringValue, setStringValue] = useState<string>('');
@@ -22,7 +21,11 @@ const InputGroup: React.FC<IInputGroupProps> = (props) => {
   }
 
   return (
-    <Tooltip title={error} color={'red'} open={!!error} placement='bottom'>
+    <Tooltip
+      title={error}
+      color={'red'}
+      open={!!error}
+      placement='bottom'>
       <Input.Group compact >
         <Input
           style={{ width: 'calc(100% - 112px)' }}
@@ -34,7 +37,17 @@ const InputGroup: React.FC<IInputGroupProps> = (props) => {
           status={error && 'error'}
           allowClear
         />
-        <Button type='primary' size='large' onClick={handleClick}>Проверить</Button>
+        <Button
+          type='primary'
+          size='large'
+          onClick={handleClick}
+          style={{
+            borderRadius: 0,
+            borderStartEndRadius: '6px',
+            borderEndEndRadius: '6px',
+          }}>
+            Проверить
+        </Button>
       </Input.Group>
     </Tooltip>
   );

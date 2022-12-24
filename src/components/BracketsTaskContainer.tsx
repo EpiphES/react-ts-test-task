@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Divider, Empty } from 'antd';
 import { checkBrackets } from '../utils/utils';
-import TaskTextCollapse from './TaskTextCollapse';
 import InputGroup from './InputGroup';
+import TaskTextCollapse from './TaskTextCollapse';
 import Result from './Result';
 
 const BracketsTaskContainer: React.FC = () => {
