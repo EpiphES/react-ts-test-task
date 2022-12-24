@@ -1,27 +1,19 @@
 import { useState } from 'react';
-import { Button, Card, Divider, Empty, Input, Tooltip } from 'antd';
-import { IResult } from '../types/data';
-import { checkBrackets, getRusEnding } from '../utils/utils';
+import { Divider, Empty } from 'antd';
+import { checkBrackets } from '../utils/utils';
 import TaskTextCollapse from './TaskTextCollapse';
+import InputGroup from './InputGroup';
+import Result from './Result';
 
 const BracketsTaskContainer: React.FC = () => {
-  const [testString, setTestString] = useState<string>('');
   const [showResult, setShowResult] = useState<boolean>(false);
-  const [result, setResult] = useState<IResult>({ correctCount: 0, falseCount: 0});
-  const [inputError, setInputError] = useState<string>('');
+  const [correctCount, setCorrectCount] = useState<number>(0);
+  const [falseCount, setFalseCount] = useState<number>(0);
 
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setTestString(e.target.value);
-    setShowResult(false);
-    setInputError('');
-  }
-
-  function handleCheck() {
-    if(testString.length === 0) {
-      return setInputError('строка не может быть пустой');
-    }
+  function handleCheck(testString: string) {
     const res = checkBrackets(testString);
-    setResult(res);
+    setCorrectCount(res.correctCount);
+    setFalseCount(res.falseCount);
     setShowResult(true);
   }
 
@@ -36,35 +28,10 @@ const BracketsTaskContainer: React.FC = () => {
         </p>
       </TaskTextCollapse>
       <Divider orientation='center'>Проверка расстановки скобок в строке</Divider>
-      <Tooltip title={inputError} color={'red'} open={!!inputError} placement='bottom'>
-        <Input.Group compact >
-          <Input
-            style={{ width: 'calc(100% - 112px)' }}
-            value={testString}
-            onChange={handleInputChange}
-            type='text'
-            size='large'
-            placeholder='введите строку'
-            status={inputError && 'error'}
-            allowClear
-          />
-          <Button type='primary' size='large' onClick={handleCheck}>Проверить</Button>
-        </Input.Group>
-      </Tooltip>
+      <InputGroup handleSubmit={handleCheck} setShowResult={setShowResult} />
       <br />
       { showResult
-        ? <Card title='Результат:' style={{ width: 300, margin: 'auto' }}>
-            { result.correctCount === 0 && result.falseCount === 0
-              ? <p>В строке нет скобок</p>
-              : <>
-                <p>
-                  Правильно: {result.correctCount} скоб{getRusEnding(result.correctCount)({forOne: 'ка', forTwo: 'ки', forFive: 'ок'})}
-                </p>
-                <p>
-                  Неправильно: {result.falseCount} скоб{getRusEnding(result.falseCount)({forOne: 'ка', forTwo: 'ки', forFive: 'ок'})}
-                </p>
-              </> }
-          </Card>
+        ? <Result correctCount={correctCount} falseCount={falseCount}/>
         : <Empty />
       }
     </>
