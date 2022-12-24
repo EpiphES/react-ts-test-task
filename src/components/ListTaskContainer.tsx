@@ -9,10 +9,11 @@ const ListTaskContainer: React.FC = () => {
   const [items, setItems] = useState<IItem[]>([]);
 
   function generateItem() {
-    const time = getRandomIntFromInterval(10, 30);
+    const timeInterval = getRandomIntFromInterval(10, 30);
+    const finishTime = Date.now() + timeInterval * 1000;
     const newItem = {
       id: Date.now(),
-      time,
+      finishTime,
     }
     setItems((prevVal) => [...prevVal, newItem]);
   }
@@ -20,12 +21,6 @@ const ListTaskContainer: React.FC = () => {
   function removeItem(id: number) {
     setItems(items.filter((item) => item.id !== id));
   }
-
-  const itemElements = items.map((item, ind) => (
-    <List.Item key={item.id}>
-      <Item item={item} index={ind + 1} handleDelete={removeItem}/>
-    </List.Item>
-  ));
 
   return (
     <>
@@ -56,8 +51,12 @@ const ListTaskContainer: React.FC = () => {
             Добавить элемент
           </Button>}
         bordered
-        dataSource={itemElements}
-        renderItem={(element) => element}
+        dataSource={items}
+        renderItem={(elem, ind) => (
+          <List.Item key={elem.id}>
+            <Item item={elem} index={ind + 1} handleDelete={removeItem}/>
+          </List.Item>
+        )}
       />
       </div>
     </>

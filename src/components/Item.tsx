@@ -1,29 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Typography } from 'antd';
 import { getRusEnding } from '../utils/utils';
-import { IItem } from '../types/data';
-
-interface IItemProps {
-  item: IItem,
-  index: number,
-  handleDelete: Function,
-}
+import { IItemProps } from '../types/data';
+import useTimer from '../hooks/useTimer';
 
 const Item: React.FC<IItemProps> = (props) => {
   const {item, index, handleDelete} = props;
-  const [counter, setCounter] = useState(item.time);
+
+  const secondsLeft = useTimer(item.finishTime);
 
   useEffect(() => {
-    if(counter > 0) {
-      setTimeout(() => setCounter(counter - 1), 1000);
-      return;
+    if(secondsLeft <= 0) {
+      handleDelete(item.id);
     }
-    handleDelete(item.id);
-  }, [counter, item, handleDelete]);
+  }, [secondsLeft, handleDelete, item]);
 
   return (
     <Typography.Text>
-      {`${index}. Исчезнет через ${counter} секунд${getRusEnding(counter)({forOne: 'у', forTwo: 'ы', forFive: ''})}`}
+      {`${index}. Исчезнет через ${secondsLeft} секунд${getRusEnding(secondsLeft)({forOne: 'у', forTwo: 'ы', forFive: ''})}`}
     </Typography.Text>
   );
 }
