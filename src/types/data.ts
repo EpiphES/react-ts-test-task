@@ -1,17 +1,37 @@
+import { ReactNode } from 'react';
+
 interface IItem {
   id: number,
-  time: number,
+  finishTime: number,
 }
-
 interface IEndings {
   forOne: string,
   forTwo: string,
   forFive: string,
 }
-
-interface IResult {
+interface IItemProps {
+  item: IItem,
+  index: number,
+  handleDelete: Function,
+}
+interface IResultProps {
   correctCount: number,
   falseCount: number,
 }
+interface IInputGroupProps {
+  handleSubmit: Function,
+  setShowResult: Function,
+}
+interface ITaskTextProps {
+  children: ReactNode,
+  header: string,
+}
 
-export type { IItem, IEndings, IResult };
+export type {
+  IItem,
+  IEndings,
+  IItemProps,
+  IResultProps,
+  IInputGroupProps,
+  ITaskTextProps,
+};
