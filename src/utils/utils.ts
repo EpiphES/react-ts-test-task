@@ -4,6 +4,11 @@ function getRandomIntFromInterval(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function parseTime(time: number) {
+  const seconds = Math.floor((time / 1000) % 60);
+  return seconds;
+}
+
 function getRusEnding(number: number) {
   return function chooseEnding (endings: IEndings) {
     if(number >= 11 && number <= 14) {
@@ -65,4 +70,5 @@ export {
   getRandomIntFromInterval,
   getRusEnding,
   checkBrackets,
+  parseTime,
 }
