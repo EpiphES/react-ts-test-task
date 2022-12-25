@@ -18,7 +18,7 @@ const ListTaskContainer: React.FC = () => {
     setItems((prevVal) => [...prevVal, newItem]);
   }
 
-  function removeItem(id: number) {
+  const removeItem = (id: number): void => {
     setItems(items.filter((item) => item.id !== id));
   }
 

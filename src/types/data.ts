@@ -12,15 +12,15 @@ interface IEndings {
 interface IItemProps {
   item: IItem,
   index: number,
-  handleDelete: Function,
+  handleDelete: (id: number) => void,
 }
 interface IResultProps {
   correctCount: number,
   falseCount: number,
 }
 interface IInputGroupProps {
-  handleSubmit: Function,
-  setShowResult: Function,
+  handleSubmit: (testString: string) => void,
+  setShowResult: React.Dispatch<React.SetStateAction<boolean>>,
 }
 interface ITaskTextProps {
   children: ReactNode,

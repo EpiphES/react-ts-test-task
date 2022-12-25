@@ -10,7 +10,7 @@ const BracketsTaskContainer: React.FC = () => {
   const [correctCount, setCorrectCount] = useState<number>(0);
   const [falseCount, setFalseCount] = useState<number>(0);
 
-  function handleCheck(testString: string) {
+  const handleCheck = (testString: string): void => {
     const res = checkBrackets(testString);
     setCorrectCount(res.correctCount);
     setFalseCount(res.falseCount);
